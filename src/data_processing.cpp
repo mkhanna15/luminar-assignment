@@ -20,4 +20,25 @@ types::Samples transform(types::Samples samples) {
 
   return samples;
 }
+
+types::Sample cartesian_transform_t::operator()(types::Sample sample) {
+    float azimuth = sample.azimuth;
+    float elevation = sample.elevation;
+    float range = sample.range;
+
+    float x = range*cos(elevation)*cos(azimuth);
+    float y = range*cos(elevation)*sin(azimuth);
+    float z = range*sin(elevation);
+
+    types::Sample cartesian_sample;
+
+    // Because data_sink expects, Sample object, hence using existing fields of Sample
+    // to have Cartesian coordinates.
+    cartesian_sample.azimuth = x;
+    cartesian_sample.elevation = y;
+    cartesian_sample.range = z;
+    cartesian_sample.sequence_no = sample.sequence_no;
+    
+    return cartesian_sample;
+}
 } // namespace processing

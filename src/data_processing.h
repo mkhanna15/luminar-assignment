@@ -13,6 +13,10 @@ namespace processing {
 // TODO: update this function so that it correctly transforms data
 // from spherical to Cartesian coordinates
 types::Samples transform(types::Samples samples);
+
+struct cartesian_transform_t {
+    types::Sample operator()(types::Sample sample);
+};
 } // namespace processing
 
 #endif

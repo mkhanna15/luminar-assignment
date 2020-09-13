@@ -27,6 +27,15 @@ struct Buffer {
 
   std::atomic_bool dropped_a_packet = ATOMIC_VAR_INIT(false);
 };
+
+struct ConsumerBuffer {
+  Samples read_data;
+  std::mutex shared_mutex;
+  std::condition_variable wait_list;
+  std::atomic_bool end_run = ATOMIC_VAR_INIT(false);
+  std::atomic<int> threads_finished;
+};
+
 } // namespace types
 
 #endif

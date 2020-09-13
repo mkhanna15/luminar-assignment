@@ -19,10 +19,10 @@ std::atomic_bool unordered = ATOMIC_VAR_INIT(false);
 } // namespace
 
 namespace sink {
-void data_sink(types::Samples samples) {
+void data_sink(types::Samples const& samples) {
   std::lock_guard<std::mutex> l(mut);
 
-  secret_channel::setDataReceived();
+  //secret_channel::setDataReceived();
 
   for (auto &p : samples) {
     if (p.sequence_no != sequence_number) {

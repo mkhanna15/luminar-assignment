@@ -10,7 +10,7 @@
 #include "types.h"
 
 namespace sink {
-void data_sink(types::Samples samples);
+void data_sink(types::Samples const& samples);
 bool order_lost();
 } // namespace sink
 
