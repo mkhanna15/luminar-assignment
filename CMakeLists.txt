@@ -3,12 +3,14 @@ project (tiny_data_client)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
 set(${PROJECT_NAME}_headers
   src/data_processing.h
   src/data_sink.h
   src/data_source.h
   src/secret_channel.h
+  src/pipeline.h
   src/types.h
 )
 
@@ -17,6 +19,7 @@ set(${PROJECT_NAME}_sources
   src/data_sink.cpp
   src/data_source.cpp
   src/secret_channel.cpp
+  src/pipeline.cpp
   src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${${PROJECT_NAME}_headers} ${${PROJECT_NAME}_sources})
